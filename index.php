@@ -27,13 +27,23 @@ try {
     // Display the fetched data
     foreach ($reverse_posts as $post) {
         $id = $post['id'];
+        $title = $post['title'];
+        $body = $post['body'];
 ?>
 <div class="flex flex-col items-center justify-center w-screen <?php echo $id; ?> ">
     <a href="posts-detail.php?id=<?php echo $id; ?> " class="flex justify-center gap-5 border-b-2 p-5  ">
         <div class="flex flex-col gap-7 w-[35vw]">
-            <div class="flex-col  ">
-                <div class="text-2xl font-bold"><?php echo $post['title'] ?></div>
-                <div class="opacity-50 max-w-[32vw] break-words  "><?php echo $post['body']  ?></div>
+            <div class="flex flex-col gap-3  ">
+                <div class="text-2xl font-bold"><?php echo $title; ?></div>
+                <div class="opacity-50 max-w-[32vw] break-words  ">
+                    <?php if (strlen($body) > 50) {
+                                echo substr($body, 0, 49), "...";
+                            } else {
+                                echo $body;
+
+                            }
+                             ?>
+                </div>
             </div>
             <div class="flex justify-between font-extralight">
 
