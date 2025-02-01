@@ -17,7 +17,7 @@ $body = isset($_POST['body']) ? $_POST['body'] : "";
 <div class="flex justify-center items-center w-screen h-[80vh] text-4xl">
 
     <?php
-    if (empty($title) && empty($body)) {
+    if (empty($title) || empty($body)) {
         echo '<div class="font-bold text-3xl">Post failed... please add a Title and a Body.</div>';
     } else {
     ?>
