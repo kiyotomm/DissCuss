@@ -31,12 +31,12 @@ try {
 <?php
 foreach ($posts as $postDetail) { ?>
 
-    <div class="flex  items-start justify-center w-[97vw] h-[80vh]">
-        <div class="flex flex-col gap-5 w-[50vw]  mt-10">
-            <div class="text-4xl font-bold"><?php echo $postDetail['title'] ?></div>
-            <div><?php echo $postDetail['body'] ?></div>
-        </div>
+<div class="flex  items-start justify-center w-[97vw] h-[80vh] break-words">
+    <div class="flex flex-col gap-5 w-[50vw]  mt-10">
+        <div class="text-4xl font-bold"><?php echo $postDetail['title'] ?></div>
+        <div><?php echo $postDetail['body'] ?></div>
     </div>
+</div>
 <?php
 }
 ?>

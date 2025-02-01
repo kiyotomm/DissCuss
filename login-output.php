@@ -1,3 +1,5 @@
+<?php require "./includes/components/tailwinder.php"; ?>
+
 <?php
 
 error_reporting(E_ALL); // Report all errors
@@ -21,23 +23,28 @@ $stmt = $pdo->prepare($sql);
 $stmt->execute(['username' => $username]);
 
 //user fetcher
-$result = $stmt->fetch();
-echo 'duck';
+$result = $stmt->fetch(); ?>
 
-if (!$result) {
 
-    echo 'dafuck is on username';
-    exit();
-}
 
-if ($result['password'] !== $password) {
 
-    echo 'dafuck password';
-    exit();
-}
+<div class="flex justify-center w-screen h-[70vh]">
 
+    <?php if (!$result) {
+
+        echo 'Invalid username or password';
+        exit();
+    }
+    if ($result['password'] !== $password) {
+
+        echo 'dafuck password';
+        exit();
+    } ?>
+
+</div>
+<?php 
 $_SESSION['user'] = ['username' => $username, 'id' => $result['id']];
 
 header("Location: /");
-
 // Fetch the data as an associative array
+?>

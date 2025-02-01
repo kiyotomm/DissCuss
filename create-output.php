@@ -1,4 +1,4 @@
-<?php require "./includes/components/navbar.php" ?>
+<?php require "./includes/components/tailwinder.php"; ?>
 
 <?php
 $host = 'localhost'; // Replace with your DB host
@@ -22,10 +22,15 @@ $body = isset($_POST['body']) ? $_POST['body'] : "";
     } else {
     ?>
 
-        <span class="font-bold text-red-500">
-            diss!
-        </span>
-        succesfully added.
+        <div class="flex flex-col items-center">
+            <p>
+                <span class="font-bold text-red-500">
+                    diss!
+                </span>
+                succesfully added.
+            </p>
+            <a class="underline text-blue-700" href="/disscuss">back</a>
+        </div>
 
         <?php
         try {
@@ -43,8 +48,6 @@ $body = isset($_POST['body']) ? $_POST['body'] : "";
     }
     ?>
 
-    <?php
-    echo $title, $body;
-    ?>
+
 
 </div>
