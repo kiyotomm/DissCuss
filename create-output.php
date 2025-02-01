@@ -18,9 +18,7 @@ $body = isset($_POST['body']) ? $_POST['body'] : "";
 
     <?php
     if (empty($title) && empty($body)) {
-    ?>
-        <div class="font-bold text-3xl"> Post failed... please add a Title and a body.</div>
-    <?php
+        echo '<div class="font-bold text-3xl">Post failed... please add a Title and a Body.</div>';
     } else {
     ?>
 
@@ -35,9 +33,8 @@ $body = isset($_POST['body']) ? $_POST['body'] : "";
             $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $db_username, $db_password);
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-
-            $stmt = $pdo->prepare("INSERT INTO posts (title, body) VALUES (:title, :body)");
-            $stmt->execute();
+            $stmt = $pdo->prepare("INSERT INTO posts (title, body) VALUES (?, ?)");
+            $stmt->execute([$title, $body]);
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
         }

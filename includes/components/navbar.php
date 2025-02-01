@@ -7,6 +7,7 @@
 
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
@@ -29,9 +30,9 @@
             <a href="/disscuss">
                 <li>Home</li>
             </a>
-            <a href="/disscuss/explore.php">
+            <!-- <a href="/disscuss/explore.php">
                 <li>Explore</li>
-            </a>
+            </a> -->
             <a href="/disscuss/create-input.php">
                 <li>Create</li>
             </a>
