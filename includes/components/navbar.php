@@ -36,9 +36,14 @@
             <a href="/disscuss/create-input.php">
                 <li>Create</li>
             </a>
-            <a href="/disscuss/login.php">
+            <a href="<?php if (!isset($_SESSION['user'])) {
+                            echo "/disscuss/login-input.php";
+                        } else {
+                            echo "/disscuss/user.php";
+                        } ?>">
                 <li>Guest</li>
             </a>
+            <a href="/user.php"></a>
         </ul>
     </nav>
 </body>

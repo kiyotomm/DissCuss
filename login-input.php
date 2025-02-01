@@ -9,8 +9,14 @@
             <input type="text" name="username" placeholder="your name" class="p-2 border rounded-lg border-gray-400 " />
             <input type="password" name="password" placeholder="•••••••••••"
                 class="p-2 border rounded-lg border-gray-400 " />
-            <input type="submit" value="Log-in"
-                class="cursor-pointer self-center p-3 rounded-lg text-white bg-blue-500" />
+            <div class="flex flex-col items-center justify-center gap-5">
+                <input type="submit" value="Log-in"
+                    class="cursor-pointer self-center p-3 rounded-lg text-white bg-blue-500" />
+                <span>Don't have an account? <a class="text-blue-700 underline"
+                        href="/disscuss/sign-in-input.php">Register
+                    </a>here.</span>
+
+            </div>
         </form>
     </div>
 </div>

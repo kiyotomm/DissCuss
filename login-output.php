@@ -39,12 +39,18 @@ $result = $stmt->fetch(); ?>
 
         echo 'dafuck password';
         exit();
+    } else { ?>
+
+        <div class="flex flex-col items-center justify-center gap-5 w-[97vw] text-4xl font-bold">Login successful <a
+                href="/disscuss" class="text-blue-700 underline">Return to
+                homepage</a></div>
+    <?php
     } ?>
 
 </div>
-<?php 
+<?php
 $_SESSION['user'] = ['username' => $username, 'id' => $result['id']];
 
-header("Location: /");
+// header("Location: /disscuss");
 // Fetch the data as an associative array
 ?>
