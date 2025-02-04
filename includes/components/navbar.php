@@ -25,9 +25,11 @@
         </div>
 
         <div class="p-1">
-            <input type="text" class="border border-gray-400 rounded w-[30vw] h-[5vh] p-2"
-                placeholder="外語ビジネスニュース..." />
-            <button><i class="fa-solid fa-magnifying-glass"></i></button>
+            <form action="/disscuss/search-output.php" method="POST">
+                <input type="text" class="border border-gray-400 rounded w-[30vw] h-[5vh] p-2"
+                    placeholder="外語ビジネスニュース..." />
+                <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
         </div>
         <ul class="flex gap-5 font-bold list-none">
             <a href="/disscuss">

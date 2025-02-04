@@ -7,6 +7,11 @@ session_start() ?>
         <div class="font-bold text-3xl self-center mb-9">user details</div>
         <div class="flex gap-[8vw]"><span>Username:</span><?php echo $_SESSION['user']['username'] ?></div>
         <div class="flex gap-[8vw]"><span>Password:</span><?php echo "*******"  ?></div>
-        <a href="/disscuss/logout.php" class="self-center mt-5 p-3 rounded-lg bg-blue-600 text-white">logout</a>
+        <div class="flex gap-4">
+            <a href="/disscuss/logout.php" class="self-center mt-5 p-3 rounded-lg bg-blue-600 text-white">logout</a>
+            <a href="/disscuss/user-update-input.php" class="self-center mt-5 p-3 text-lg  rounded-lg shadow-lg">change
+                username or
+                password</a>
+        </div>
     </div>
 </div>
