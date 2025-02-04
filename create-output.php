@@ -13,6 +13,7 @@ if (!isset($_SESSION['user']['id'])) {
 $title = isset($_POST['title']) ? $_POST['title'] : "";
 $body = isset($_POST['body']) ? $_POST['body'] : "";
 $user_id = $_SESSION['user']['id']; // Correct way to access user ID
+$poster = isset(($_POST['poster'])) ? $_POST['poster'] : "";
 
 
 

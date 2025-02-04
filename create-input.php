@@ -3,6 +3,7 @@
 
 <form action="create-output.php" method="POST" class="flex flex-col items-center justify-center gap-10 w-screen mt-10">
     <div class="flex flex-col gap-5 w-[30vw]">
+        <input type="hidden" value="<?php echo $_SESSION['user']['username'] ?>" name="poster" />
         <h2 class="text-3xl">Title</h2>
         <input type="text" name="title" class="border border-gray-400 rounded-full w-[60vh] p-2"
             placeholder="プログラマーがAIに取って代わられる!!" />

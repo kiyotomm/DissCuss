@@ -17,24 +17,24 @@ $user_password = isset($_POST['password']) ? $_POST['password'] : "";
     } else {
     ?>
 
-        <div class="flex flex-col items-center">
-            <p>
-                <span class="font-bold text-red-500">
-                    diss!
-                </span>
-                you are now a disser!
-            </p>
-            <a class="underline text-blue-700" href="/disscuss/login-input.php">login now!</a>
-        </div>
+    <div class="flex flex-col items-center">
+        <p>
+            <span class="font-bold text-red-500">
+                diss!
+            </span>
+            you are now a disser!
+        </p>
+        <a class="underline text-blue-700" href="/disscuss/login-input.php">login now!</a>
+    </div>
 
-        <?php
+    <?php
         try {
 
             $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
             $stmt = $pdo->prepare("INSERT INTO users (username, password) VALUES (?,?)");
-            $stmt->execute([$username, $password]);
+            $stmt->execute([$user_username, $user_password]);
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
         }

@@ -14,8 +14,9 @@
                     class="cursor-pointer self-center p-3 rounded-lg text-white bg-blue-500" />
                 <span>Already registered? <a class="text-blue-700 underline" href="/disscuss/login-input.php">login
                     </a>here.</span>
-
             </div>
+            <div class="self-center font-light">This is a place to write hateful thoughts... <span class="font-bold">for
+                    now.</span></div>
         </form>
     </div>
 </div>

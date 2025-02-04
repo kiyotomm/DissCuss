@@ -17,9 +17,12 @@
 
 <body>
     <nav class="flex justify-around p-10">
-        <a href="/disscuss">
-            <h1 class="text-4xl font-bold">DissCuss</h1>
-        </a>
+        <div class="flex gap-4 items-center">
+            <a href="/disscuss">
+                <h1 class="text-4xl font-bold">DissCuss</h1>
+            </a>
+            <a href="https://github.com/kiyotomm " target="_blank"><i class="fa-brands fa-github fa-2xl"></i></a>
+        </div>
 
         <div class="p-1">
             <input type="text" class="border border-gray-400 rounded w-[30vw] h-[5vh] p-2"
@@ -44,7 +47,7 @@
                 <li><?php if (!isset($_SESSION['user'])) {
                         echo 'guest';
                     } else {
-                        echo $_SESSION['user']['username'];
+                        echo "<div class=", "font-extrabold ", ">", $_SESSION['user']['username'], "</div>";
                     } ?></li>
             </a>
             <a href="/user.php"></a>
