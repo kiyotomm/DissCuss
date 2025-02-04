@@ -1,12 +1,19 @@
-<?php require "./includes/components/tailwinder.php"; ?>
-
+<?php require "./includes/components/tailwinder.php";
+require "./includes/database.php" ?>
 <?php
-$host = 'localhost'; // Replace with your DB host
-$dbname = 'disscuss'; // Replace with your DB name
-$db_username = 'root'; // Replace with your DB username
-$db_password = ''; // Replace with your DB password
+session_start();
+var_dump($_SESSION);
+if (!isset($_SESSION['user']['id'])) {
+    echo '<div class="flex justify-center items-center w-screen h-[80vh] text-4xl font-bold text-red-500">
+            You must be logged in to post.
+          </div>';
+    exit;
+}
+
 $title = isset($_POST['title']) ? $_POST['title'] : "";
 $body = isset($_POST['body']) ? $_POST['body'] : "";
+$user_id = $_SESSION['user']['id']; // Correct way to access user ID
+
 
 
 ?>
@@ -38,8 +45,8 @@ $body = isset($_POST['body']) ? $_POST['body'] : "";
             $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $db_username, $db_password);
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-            $stmt = $pdo->prepare("INSERT INTO posts (title, body) VALUES (?, ?)");
-            $stmt->execute([$title, $body]);
+            $stmt = $pdo->prepare("INSERT INTO posts (title, body,user_id) VALUES (?, ?,?)");
+            $stmt->execute([$title, $body, $user_id]);
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
         }

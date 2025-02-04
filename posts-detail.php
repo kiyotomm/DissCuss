@@ -1,12 +1,9 @@
 <?php require "./includes/components/navbar.php";
+require "./includes/database.php";
 
 ?>
 
 <?php
-$host = 'localhost'; // Replace with your DB host
-$dbname = 'disscuss'; // Replace with your DB name
-$username = 'root'; // Replace with your DB username
-$password = ''; // Replace with your DB password
 
 try {
     // Create a PDO instance (connect to the database)
@@ -31,12 +28,12 @@ try {
 <?php
 foreach ($posts as $postDetail) { ?>
 
-<div class="flex  items-start justify-center w-[97vw] h-[80vh] break-words">
-    <div class="flex flex-col gap-5 w-[50vw]  mt-10">
-        <div class="text-4xl font-bold"><?php echo $postDetail['title'] ?></div>
-        <div><?php echo $postDetail['body'] ?></div>
+    <div class="flex  items-start justify-center w-[97vw] h-[80vh] break-words">
+        <div class="flex flex-col gap-5 w-[50vw]  mt-10">
+            <div class="text-4xl font-bold"><?php echo $postDetail['title'] ?></div>
+            <div><?php echo $postDetail['body'] ?></div>
+        </div>
     </div>
-</div>
 <?php
 }
 ?>

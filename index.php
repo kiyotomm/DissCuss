@@ -1,12 +1,7 @@
-<?php require './includes/components/navbar.php' ?>
+<?php require './includes/components/navbar.php';
+require "./includes/database.php" ?>
 
 <?php
-// Database configuration
-$host = 'localhost'; // Replace with your DB host
-$dbname = 'disscuss'; // Replace with your DB name
-$username = 'root'; // Replace with your DB username
-$password = ''; // Replace with your DB password
-
 try {
     // Create a PDO instance (connect to the database)
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
@@ -30,28 +25,27 @@ try {
         $title = $post['title'];
         $body = $post['body'];
 ?>
-<div class="flex flex-col items-center justify-center w-screen <?php echo $id; ?> ">
-    <a href="posts-detail.php?id=<?php echo $id; ?> " class="flex justify-center gap-5 border-b-2 p-5  ">
-        <div class="flex flex-col gap-7 w-[35vw]">
-            <div class="flex flex-col gap-3  ">
-                <div class="text-2xl font-bold"><?php echo $title; ?></div>
-                <div class="opacity-50 max-w-[32vw] break-words  ">
-                    <?php if (strlen($body) > 50) {
+        <div class="flex flex-col items-center justify-center w-[98vw] <?php echo $id; ?> ">
+            <a href="posts-detail.php?id=<?php echo $id; ?> " class="flex justify-center gap-5 border-b-2 p-5  ">
+                <div class="flex flex-col gap-7 w-[35vw]">
+                    <div class="flex flex-col gap-3  ">
+                        <div class="text-2xl font-bold"><?php echo $title; ?></div>
+                        <div class="opacity-50 max-w-[32vw] break-words  ">
+                            <?php if (strlen($body) > 50) {
                                 echo substr($body, 0, 49), "...";
                             } else {
                                 echo $body;
-
                             }
-                             ?>
-                </div>
-            </div>
-            <div class="flex justify-between font-extralight">
+                            ?>
+                        </div>
+                    </div>
+                    <div class="flex justify-between font-extralight">
 
-                <span><?php echo $post['posted-at'] ?></span>
-            </div>
+                        <span><?php echo $post['posted-at'] ?></span>
+                    </div>
+                </div>
+            </a>
         </div>
-    </a>
-</div>
 <?php  }
 } catch (PDOException $e) {
     // Handle connection errors

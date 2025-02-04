@@ -1,26 +1,26 @@
-<?php require "./includes/components/tailwinder.php"; ?>
+<?php require './includes/components/tailwinder.php';
+require "./includes/database.php" ?>
 
 <?php
+session_start();
+$user_username = isset($_POST['username']) ? trim($_POST['username']) : "";
+$user_password = isset($_POST['password']) ? trim($_POST['password']) : "";
+
+
 
 error_reporting(E_ALL); // Report all errors
 ini_set('display_errors', 1); // Display errors on the screen
 
-session_start();
-$host = 'localhost'; // Replace with your DB host
-$dbname = 'disscuss'; // Replace with your DB name
-$db_username = 'root'; // Replace with your DB username
-$db_password = ''; // Replace with your DB password
-$username = htmlspecialchars($_POST['username']);
-$password = $_POST['password'];
 
-$pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $db_username, $db_password);
+
+$pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 //  SQL query to fetch data from the `posts` table
 $sql = "SELECT * FROM users WHERE username =:username";
 
 // Execute the query
 $stmt = $pdo->prepare($sql);
-$stmt->execute(['username' => $username]);
+$stmt->execute(['username' => $user_username]);
 
 //user fetcher
 $result = $stmt->fetch(); ?>
@@ -35,11 +35,16 @@ $result = $stmt->fetch(); ?>
         echo 'Invalid username or password';
         exit();
     }
-    if ($result['password'] !== $password) {
+    if ($result['password'] !== $user_password) {
 
         echo 'dafuck password';
         exit();
-    } else { ?>
+    } else {
+
+        $_SESSION['user'] = [
+            'username' => $result['username'],
+            'id' => $result['id']
+        ]; ?>
 
         <div class="flex flex-col items-center justify-center gap-5 w-[97vw] text-4xl font-bold">Login successful <a
                 href="/disscuss" class="text-blue-700 underline">Return to
@@ -49,7 +54,7 @@ $result = $stmt->fetch(); ?>
 
 </div>
 <?php
-$_SESSION['user'] = ['username' => $username, 'id' => $result['id']];
+$_SESSION['user'] = ['username' => $user_username, 'id' => $result['id']];
 
 // header("Location: /disscuss");
 // Fetch the data as an associative array

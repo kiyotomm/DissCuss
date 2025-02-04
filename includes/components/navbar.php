@@ -41,7 +41,11 @@
                         } else {
                             echo "/disscuss/user.php";
                         } ?>">
-                <li>Guest</li>
+                <li><?php if (!isset($_SESSION['user'])) {
+                        echo 'guest';
+                    } else {
+                        echo $_SESSION['user']['username'];
+                    } ?></li>
             </a>
             <a href="/user.php"></a>
         </ul>
