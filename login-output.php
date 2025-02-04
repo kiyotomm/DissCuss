@@ -30,10 +30,14 @@ $result = $stmt->fetch(); ?>
 
 <div class="flex justify-center w-screen h-[70vh]">
 
-    <?php if (!$result) {
+    <?php if (!$result) { ?>
 
-        echo 'Invalid username or password';
-        exit();
+        <div class="flex flex-col items-center justify-center gap-5 w-[97vw] text-4xl font-bold"><span>
+                Invalid username or
+                password
+            </span><a href="/disscuss/login-input.php" class="text-blue-700 underline">login</a></div>
+
+    <?php exit();
     }
     if ($result['password'] !== $user_password) {
 
@@ -46,7 +50,7 @@ $result = $stmt->fetch(); ?>
             'id' => $result['id']
         ]; ?>
 
-        <div class="flex flex-col items-center justify-center gap-5 w-[97vw] text-4xl font-bold">Login successful <a
+        <div class=" flex flex-col items-center justify-center gap-5 w-[97vw] text-4xl font-bold">Login successful <a
                 href="/disscuss" class="text-blue-700 underline">Return to
                 homepage</a></div>
     <?php
